@@ -7,10 +7,10 @@ function index(req, res) {
   res.writeHead(200, {
     "Content-Type": "text/html; charset=utf-8"
   });
-  res.write('<a href="http://localhost:8888/aleatorios">ALEATÓRIOS</a><br>');
-  res.write('<a href="http://localhost:8888/primos">PRIMOS</a><br>');
-  res.write('<a href="http://localhost:8888/sobre">SOBRE</a><br>');
-  res.write('<a href="http://localhost:8888/equacao">EQUAÇÃO</a><br>');
+  res.write('<a href="/aleatorios">ALEATÓRIOS</a><br>');
+  res.write('<a href="/primos">PRIMOS</a><br>');
+  res.write('<a href="/sobre">SOBRE</a><br>');
+  res.write('<a href="/equacao">EQUAÇÃO</a><br>');
   res.end();
 }
 
@@ -19,7 +19,7 @@ function sobre(req, res) {
   res.writeHead(200, {
     "Content-Type": "text/html; charset=utf-8"
   });
-  res.write('<a href="http://localhost:8888/" >voltar</a><br>');
+  res.write('<a href="/" >voltar</a><br>');
   res.write("<p>Nome : Marluce Aparecida Vitor</p>");
   res.write("<p>Matricula : 201276026</p>");
   res.write("<p>E-mail :marlucevitor@ice.ufjf.br</p>");
@@ -32,7 +32,7 @@ function aleatorios(req, res) {
   res.writeHead(200, {
     "Content-Type": "text/html; charset=utf-8"
   });
-  res.write('<a href="http://localhost:8888/" >voltar</a><br>');
+  res.write('<a href="/" >voltar</a><br>');
   var par = [];
   var impar = [];
   for (i = 0; i < 100; i++) {
@@ -75,7 +75,7 @@ function primos(req, res) {
   res.writeHead(200, {
     "Content-Type": "text/html; charset=utf-8"
   });
-  res.write("<a href='http://localhost:8888/'>HOME</a> <br>");
+  res.write("<a href='/'>HOME</a> <br>");
   res.write("Passa os parametros pela url usando: n1 e n2!ATENÇÃO VALORES MENORES DO QUE 100 e n1 precisa ser menor que n2 !!<br><br> <br><br>");
 
   var queryData = url.parse(req.url, true).query;
