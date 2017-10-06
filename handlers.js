@@ -401,7 +401,7 @@ function xadrez(req, res) {
 		res.write("</form>");
 	res.write("<a href='/'>HOME</a> <br>");
 
-tabuleiro(matriz, res);
+
 
 	var matriz = [];
 	for(var i=0; i<8; i++) {
