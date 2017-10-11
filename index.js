@@ -10,7 +10,7 @@ handlers["/aleatorios"] = requestHandlers.aleatorios;
 handlers["/primos"] = requestHandlers.primos;
 handlers["/equacao"] = requestHandlers.equacao;
 handlers["/xadrez"] =requestHandlers.xadrez;
-handlers["/xadrezjson"] =requestHandlers.xadrezjson;
+//handlers["/xadrezjson"] =requestHandlers.xadrezjson;
 handlers["/xadrez.json"] =requestHandlers.tabuleiroJSON;
 handlers["/notfound"] = requestHandlers.naoEncontrado;
 

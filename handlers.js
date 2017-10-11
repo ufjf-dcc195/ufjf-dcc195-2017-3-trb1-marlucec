@@ -245,12 +245,32 @@ function montarTabuleiro(l, c){
       matriz[i][j] = 0;
     }
   }
-  matriz[l][c] = 1;
-  matriz[l-1][c+2] = 2;
-  matriz[l+1][c+2] = 2;
 
-  return matriz;
+    matriz[l][c] = 1;
+
+    //if(l===2 && c===2)
+    //if(l>=0 && c>=0)
+   //{
+    matriz[l-1][c-2]=2;
+		matriz[l+1][c+2]=2;
+		matriz[l+1][c-2]=2;
+		matriz[l-1][c+2]=2;
+		matriz[l-2][c-1]=2;
+		matriz[l+2][c+1]=2;
+		matriz[l+2][c-1]=2;
+		matriz[l-2][c+1]=2;
+//}else{
+
+
+//}
+//tratar as excessões
+//else {
+//  matriz[l][c] = 2;
+//}
+
+return matriz;
 }
+
 function desenhaTabuleiroHTML(tabuleiro, res){
   res.write("<table>");
   for (var i = 0; i < tabuleiro.length; i++) {
@@ -298,7 +318,16 @@ function xadrezHandler(req, res){
 }
 
 function tabuleiroJSON(req, res){
-  var mat = montarTabuleiro(3,4);
+  var http = require('http');
+  var url = require('url');
+  res.writeHead(200, {
+    "Content-Type": "text/html; charset=utf-8"
+  });
+  var queryData = url.parse(req.url, true).query;
+  var lin = parseInt(queryData.lin);
+  var col = parseInt(queryData.col);
+  var matriz = [lin][col];
+  var mat = montarTabuleiro(lin,col);
   res.writeHead(200, {"Content-Type":"application/json"});
   res.write(JSON.stringify(mat));
   res.end();
@@ -467,16 +496,16 @@ function xadrez(req, res) {
 	 res.writeHead(200, {"Content-Type": "text/html"});
 	  res.write("<a href='/'>HOME</a> <br>");
 	  MontarTabuleiro(matriz, res);
+    res.write("<a href='/xadrez.json?lin="+lin+"&&col="+col+"'>IR PARA APLICATION/JSON</a> <br>");
 	  res.end();
     })
 
   }
 }
 
-function xadrezjson(req, res){
-res.setHeader('Content-Type','application/json');
-res.end(JSON.stringify([[0,1],[0,2]]));
-}
+//function xadrezjson(req, res){
+//res.setHeader('Content-Type','application/json');
+//}
 
 exports.index = index;
 exports.sobre = sobre;
@@ -484,6 +513,6 @@ exports.aleatorios = aleatorios;
 exports.primos = primos;
 exports.equacao = equacao;
 exports.xadrez = xadrez;
-exports.xadrezjson = xadrezjson;
+//exports.xadrezjson = xadrezjson;
 exports.naoEncontrado = naoEncontrado;
 exports.tabuleiroJSON = tabuleiroJSON;
