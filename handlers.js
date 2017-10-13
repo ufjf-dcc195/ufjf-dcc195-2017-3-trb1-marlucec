@@ -21,7 +21,7 @@ function aleatorios(req, res) {
   res.writeHead(200, {
     "Content-Type": "text/html; charset=utf-8"
   });
-  res.write('<a href="/" >voltar</a><br>');
+  res.write('<a href="/" >HOME</a><br>');
   var par = [];
   var impar = [];
   for (i = 0; i < 100; i++) {
@@ -142,7 +142,7 @@ function equacao(req, res) {
       res.writeHead(200, {
         "Content-Type": "text/html; charset=utf-8"
       });
-      res.write("<a href='/'>HOME</a> <br>");
+      res.write("<a href='/'>HOME</a> <br");
       /*
       if ((dados1 == "") || (dados1 == " ")) {
         dados1 = 0;
@@ -197,7 +197,7 @@ function sobre(req, res) {
   res.writeHead(200, {
     "Content-Type": "text/html; charset=utf-8"
   });
-  res.write('<a href="/" >voltar</a><br>');
+  res.write('<a href="/" >HOME</a><br>');
   res.write("<p>Nome : Marluce Aparecida Vitor</p>");
   res.write("<p>Matricula : 201276026</p>");
   res.write("<p>E-mail :marlucevitor@ice.ufjf.br</p>");
@@ -245,20 +245,39 @@ function montarTabuleiro(l, c){
       matriz[i][j] = 0;
     }
   }
+  if(l<8&&c<8){
+          matriz[l][c]=1;
+         if(l+2<8 &&c+1<8 )
+          matriz[l+2][c+1]=2;
+         if(l+2<8 &&c-1>=0)
+          matriz[l+2][c-1]=2;
+         if(l-2>=0&&c+1<8)
+          matriz[l-2][c+1]=2;
+         if(l-2>=0&&c-1>=0)
+          matriz[l-2][c-1]=2;
+         if(l+1<8 &&c+2<8 )
+          matriz[l+1][c+2]=2;
+         if(l+1<8 &&c-2>=0)
+          matriz[l+1][c-2]=2;
+         if(l-1>=0&&c+2<8 )
+          matriz[l-1][c+2]=2;
+         if(l-1>=0&&c-2>=0)
+          matriz[l-1][c-2]=2;
+        }
 
-    matriz[l][c] = 1;
+  //  matriz[l][c] = 1;
 
     //if(l===2 && c===2)
     //if(l>=0 && c>=0)
    //{
-    matriz[l-1][c-2]=2;
-		matriz[l+1][c+2]=2;
-		matriz[l+1][c-2]=2;
-		matriz[l-1][c+2]=2;
-		matriz[l-2][c-1]=2;
-		matriz[l+2][c+1]=2;
-		matriz[l+2][c-1]=2;
-		matriz[l-2][c+1]=2;
+    //matriz[l-1][c-2]=2;
+		//matriz[l+1][c+2]=2;
+		//matriz[l+1][c-2]=2;
+		//matriz[l-1][c+2]=2;
+		//matriz[l-2][c-1]=2;
+		//matriz[l+2][c+1]=2;
+		//matriz[l+2][c-1]=2;
+		//matriz[l-2][c+1]=2;
 //}else{
 
 
@@ -402,7 +421,7 @@ function MontarTabuleiro(matriz, res) {
 
 function xadrez(req, res) {
 	if(req.method == "GET"){
-    res.writeHead(200, {"Content-Type": "text/html"});
+    res.writeHead(200, {"Content-Type": "text/html; charset=utf-8"});
     res.write("<form method=post >");
 		res.write("<table>");
 		res.write("<tr><td>Coluna:</td><td><select type=number name=coluna  />");
@@ -429,6 +448,7 @@ function xadrez(req, res) {
 		res.write("<input type=submit />");
 		res.write("</form>");
 	res.write("<a href='/'>HOME</a> <br>");
+  res.write("<br>O link para o JSON está na próxima página, no resultado do XADREZ html</br>");
 
 
 
@@ -493,7 +513,7 @@ function xadrez(req, res) {
 			  }
 			}
 		}
-	 res.writeHead(200, {"Content-Type": "text/html"});
+	 res.writeHead(200, {"Content-Type": "text/html; charset=utf-8"});
 	  res.write("<a href='/'>HOME</a> <br>");
 	  MontarTabuleiro(matriz, res);
     res.write("<a href='/xadrez.json?lin="+lin+"&&col="+col+"'>IR PARA APLICATION/JSON</a> <br>");
